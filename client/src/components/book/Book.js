@@ -12,10 +12,11 @@ function Book(props) {
         title, authors, link, description
     }
 
-    function submitBook(book) {
+    const submitBook = (book) => {
         //post book to database
         utils.saveBook(book);
-    }
+        console.log(book);
+    };
 
     return (
         <Container className="book">
@@ -28,7 +29,7 @@ function Book(props) {
                 <Col className="col-md-3">
                     <a href={props.link} target="_blank">View</a>
         
-                    <button onClick={submitBook({book})}>Save</button>
+                    <button onClick={() => submitBook({book})}>Save</button>
                 </Col>
             </Row>
             <Row>
