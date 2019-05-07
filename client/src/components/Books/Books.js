@@ -1,15 +1,23 @@
 import React from 'react';
-import { Container, Row, Col } from 'reactstrap';
+import { Container} from 'reactstrap';
+import Book from '../book/Book';
 
-function Books() {
+function Books(props) {
     return (
         <div>
             <Container>
-                <Row>
-                    <Col>
-                        <h1>Display Saved Books here</h1>
-                    </Col>
-                </Row>
+                {
+                    props.searchResults.map(book => (
+                        <Book
+                            key={book.id}
+                            title={book.title}
+                            authors={book.authors}
+                            description={book.description}
+                            link={props.infoLink}
+                            
+                        />
+                    ))
+                }
             </Container>
         </div>
     );

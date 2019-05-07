@@ -7,6 +7,8 @@ import Search from './components/pages/Search/Search';
 import Saved from './components/pages/Saved/Saved';
 
 class App extends Component {
+  
+
   render() {
     return (
       <BrowserRouter>

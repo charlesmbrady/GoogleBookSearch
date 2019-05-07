@@ -4,7 +4,7 @@ import './Search.css';
 import '../../../utils/googleAPI';
 import googleAPI from '../../../utils/googleAPI';
 import React, { useState, useEffect } from 'react'
-import Book from '../../book/Book';
+import Books from '../../Books/Books';
 
 function Search(props) {
 
@@ -12,18 +12,24 @@ function Search(props) {
     const [searchResults, setSearchResults] = useState([]);
 
     useEffect(() => {
-        // For demonstration purposes, we mock an API call.
-        googleAPI.search(searchTerm)
+    
+        if(searchTerm !== undefined){
+            googleAPI.search(searchTerm)
             .then((res) => {
                 console.log(res.data.items);
-                setSearchResults(res.data.items);
-                searchResults.map(book => (
-                    <li key={book.id}>
-                        {/* title = {book.volumeInfo.title} */}
-                    </li>
-
-                ))
+                const newResults = [];
+                res.data.items.forEach(book => {
+                    if(book.volumeInfo.title && book.volumeInfo.imageLinks){
+                        newResults.push(book.volumeInfo);
+                    }
+                    else{
+                        return 0;
+                    }
+                })
+                setSearchResults(newResults);
             })
+        }
+        
     }, [searchTerm]);
 
 
@@ -42,22 +48,14 @@ function Search(props) {
                     </Col>
                 </Row>
             </Container>
-            <Container>
+          
                 <h2>Search results</h2>
-            </Container>
-            <Container>
-                {searchResults.map(book => (
-                    <Book
-                    key={book.id}
-                    title={book.volumeInfo.title}
-                    authors={book.volumeInfo.authors}
-                    description={book.volumeInfo.description}
-                    image={book.volumeInfo.imageLinks.thumbnail}
-                    link={book.volumeInfo.infoLink}
-                    />
-
-                ))}
-            </Container>
+            {searchResults.length == 0 ? (<p>Search for books</p>) : 
+            (
+                <Books searchResults={searchResults}/>
+            )
+        }
+            
         </div>
     );
 }
