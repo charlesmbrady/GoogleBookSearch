@@ -2,7 +2,7 @@
   "name": "reactreadinglist-auth-server",
   "version": "1.0.0",
   "description": "Full Stack React App with Authentication",
-  "proxy": "http://localhost:3001/",
+  "proxy": "http://localhost:3000/",
   "main": "server/server.js",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
@@ -14,9 +14,7 @@
     "test": "mocha",
     "install": "cd client && npm install",
     "build": "cd client && npm run build",
-    "heroku-postbuild": "npm run build",
-    "cy:run": "cypress run",
-    "start-and-test": "start-server-and-test start http://localhost:3001 cy:run"
+    "heroku-postbuild": "npm run build"
   },
   "engines": {
     "node": "8.9.4",
@@ -27,8 +25,7 @@
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^3.5.0",
-    "nodemon": "^1.11.0",
-    "start-server-and-test": "^1.9.0"
+    "nodemon": "^1.11.0"
   },
   "dependencies": {
     "axios": "^0.18.0",

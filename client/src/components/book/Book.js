@@ -6,17 +6,24 @@ import utils from '../../utils/googleAPI';
 import './Book.css';
 
 function Book(props) {
-    const { title, authors, link, description } = props;
+    const { title, authors, link, description, thumbnail } = props;
 
     let book = {
-        title, authors, link, description
+        title, authors, link, description, thumbnail
     }
 
     const submitBook = (book) => {
+        
         //post book to database
-        utils.saveBook(book);
+        utils.saveBook(book).then(({ data }) => {
+            console.log(data,'axios data')
+        }).catch(err => {
+            console.log(err.response)
+        });
         console.log(book);
     };
+
+   
 
     return (
         <Container className="book">
@@ -28,12 +35,14 @@ function Book(props) {
                 </Col>
                 <Col className="col-md-3">
                     <a href={props.link} target="_blank">View</a>
-        
-                    <button onClick={() => submitBook({book})}>Save</button>
+                    
+                        <button onClick={() => submitBook(book)}>Save</button>
+                    
+                    
                 </Col>
             </Row>
             <Row>
-                <Col className="col-md-3"> <img src="https://via.placeholder.com/150"></img> </Col>
+                <Col className="col-md-3"> <img src={thumbnail}></img> </Col>
                 <Col> Description: {props.description} </Col>
             </Row>
         </Container>
