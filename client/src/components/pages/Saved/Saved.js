@@ -81,6 +81,7 @@ function Saved(props) {
                     <h2 className="title other-page">Saved Books</h2>
                 </Col>
             </Row>
+<<<<<<< HEAD
             <Row className="justify-content-center">
                 {
                     saved.map(book => (
@@ -103,6 +104,19 @@ function Saved(props) {
                 }
             </Row>
 
+=======
+            {
+                saved.map(book => (
+                    <SearchBook
+                        title={book.title}
+                        description={book.description}
+                        authors={book.authors}
+                        infoLink={book.infoLink}
+                        
+                    />
+                ))
+            }
+>>>>>>> 3ff8e3c7c14c6759853c3b01d4492814d4a067e0
         </Container>
 
     );

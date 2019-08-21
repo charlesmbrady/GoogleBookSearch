@@ -1,0 +1,26 @@
+.title {
+    font-family: 'Cinzel', serif;
+    color: white;
+    margin-top: 10%;
+}
+
+.nav-buttons {
+    margin-top: 5%;
+}
+
+.nav-button {
+    color: rgb(216, 102, 102);
+    font-size: 1.5em;
+    background: black;
+    text-decoration: none;
+    padding: 5%;
+    border: 1px solid white;
+    border-radius: 5px;
+}
+
+.nav-button:hover {
+    transition-duration: 300ms;
+    color: black;
+    background: white;
+    text-decoration: none;
+}

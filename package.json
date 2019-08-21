@@ -2,7 +2,7 @@
   "name": "reactreadinglist-auth-server",
   "version": "1.0.0",
   "description": "Full Stack React App with Authentication",
-  "proxy": "http://localhost:3001/",
+  "proxy": "http://localhost:3000/",
   "main": "server/server.js",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
