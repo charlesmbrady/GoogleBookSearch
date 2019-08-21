@@ -1,21 +1,28 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'reactstrap';
+import { Link } from 'react-router-dom';
 import './Home.css';
 
-function Home(props){
+function Home() {
+    const [searchTerm, setSearchTerm] = useState();
+    const [searchResults, setSearchResults] = useState();
+    const [savedBooks, setSavedBooks] = useState();
+
+
     return (
         <Container>
-            <br></br>
             <Row>
                 <Col>
-                    <h1>Welcome to the GoogleBooks App</h1>
+                    <input id="search-input" placeholder="Type search term here"></input>
                 </Col>
             </Row>
+          
             <Row>
                 <Col>
-                    <h4>Use the Navbar at the top to search the Google Books store and view saved books</h4>
+                    <h1></h1>
                 </Col>
             </Row>
+
         </Container>
     );
 }
