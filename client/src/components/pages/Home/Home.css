@@ -1,26 +1,22 @@
-.title {
-    font-family: 'Cinzel', serif;
-    color: white;
-    margin-top: 10%;
-}
-
-.nav-buttons {
-    margin-top: 5%;
-}
-
-.nav-button {
-    color: rgb(216, 102, 102);
-    font-size: 1.5em;
-    background: black;
-    text-decoration: none;
-    padding: 5%;
-    border: 1px solid white;
-    border-radius: 5px;
-}
-
-.nav-button:hover {
+#search-input {
     transition-duration: 300ms;
-    color: black;
-    background: white;
-    text-decoration: none;
+    margin-top: 10%;
+    height: 60px;
+    width: 50%;
+    text-align: center;
+    border: 1px solid white;
+    border-radius: 30em;
+    box-shadow: 0px 0px 5px black;
+}
+#search-input:focus {
+    transition-duration: 500ms;
+    outline: none;
+    box-shadow: 0px 0px 50px black;
+}
+
+#search-instruction {
+    height: 100%;
+    width: auto;
+    margin: 25% auto;
+    color: white;
 }

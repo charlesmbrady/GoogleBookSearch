@@ -1,111 +1,59 @@
-import { Container, Row, Col } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import {
+    Card, Button, CardHeader, CardFooter, CardBody,
+    CardTitle, CardText, Container, Row, Col
+} from 'reactstrap';
 import './Saved.css';
-import SearchBook from '../../SearchBook/SearchBook';
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import utils from '../../../utils/googleAPI';
-import SavedBook from '../../SavedBook/SavedBook';
 
-function Saved(props) {
+function Saved() {
 
 
-    const [saved, setSaved] = useState([]);
+    const [savedBooks, setSavedBooks] = useState([]);
+
+    const removeBook = (id, i) => {
+        //remove the book from the database
+        utils.removeBook(id);
+        //remove the book immediately from the screen
+        const temp = savedBooks.slice();
+        temp.splice(i, 1);
+        setSavedBooks(temp);
+    }
 
     useEffect(() => {
         utils.getBooks().then(res => {
-            console.log(res.data);
-            setSaved(res.data);
+            setSavedBooks(res.data);
         })
     }, [])
 
-    const deleteBook = (id) => {
+    useEffect(() => {
+        
+    }, [savedBooks]);
 
-        //post book to database
-        utils.removeBook(id).then(({ data }) => {
-            console.log(data, 'axios data')
-        }).catch(err => {
-            console.log(err.response)
-        });
-
-    };
 
     return (
-        // <div>
-        //     {saved.length == 0 ? (<p>No saved books</p>) :
-        //         <Container>
-        //             {
-        //                 saved.map(book => (
-        //                     // <Book
-        //                     //     key={book.id}
-        //                     //     title={book.title}
-        //                     //     authors={book.authors}
-        //                     //     description={book.description}
-        //                     //     link={book.infoLink}
-        //                     //     _id={book._id}
-
-        //                     // />
-        //                     <Container className="book">
-        //                         <Row>
-        //                             <Col className="col-md-4">
-        //                                 <h3>{book.title}</h3>
-        //                                 <h6>Written by: {book.authors}</h6>
-
-        //                             </Col>
-        //                             <Col className="col-md-3">
-        //                                 <a href={book.link} target="_blank">View</a>
-
-        //                                 <button onClick={() => deleteBook(book._id)}>Remove</button>
-
-
-        //                             </Col>
-        //                         </Row>
-        //                         <Row>
-        //                             <Col className="col-md-3"> <img src={book.thumbnail}></img> </Col>
-        //                             <Col> Description: {book.description} </Col>
-        //                         </Row>
-        //                     </Container>
-        //                 ))
-        //             }
-        //         </Container>
-        // }
-
-        // </div>
-        <Container className="search">
-            <Row className="justify-content-end other-nav">
-                <Col className="col-md-2">
-                    <Link to="/search" className="nav-button other">Search</Link>
-                </Col>
-            </Row>
+        <Container>
             <Row>
                 <Col>
-                    <h2 className="title other-page">Saved Books</h2>
+                    <div className="saved-books">
+                        {
+                            savedBooks.map((book, i) => (
+                                <Card className="saved-book" key={i}>
+                                    <CardHeader>{book.title}</CardHeader>
+                                    <CardBody>
+                                        <CardTitle>{book.authors}</CardTitle>
+                                        <CardText>{book.description}</CardText>
+                                        <a href={book.infoLink} target="_blank"><Button>Info</Button></a>
+                                    </CardBody>
+                                    <CardFooter><button onClick={() => removeBook(book._id, i)}>-</button></CardFooter>
+                                </Card>
+                            ))
+                        }
+                    </div>
                 </Col>
             </Row>
-            <Row className="justify-content-center">
-                {
-                    saved.map(book => (
-                        // <SearchBook
-                        //     title={book.title}
-                        //     description={book.description}
-                        //     authors={book.authors}
-                        //     infoLink={book.infoLink}
-                        //     thumbnail={book.thumbnail}
-
-                        // />
-                        <SavedBook
-                            title={book.title}
-                            description={book.description}
-                            authors={book.authors}
-                            infoLink={book.infoLink}
-                            thumbnail={book.thumbnail}
-                        />
-                    ))
-                }
-            </Row>
-
         </Container>
-
-    );
+    )
 }
 
 export default Saved;
