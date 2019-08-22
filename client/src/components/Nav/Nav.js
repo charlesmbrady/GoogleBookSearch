@@ -7,7 +7,7 @@ import {
     NavbarToggler,
     Nav,
     NavItem,
-    // NavLink
+    NavLink
 } from 'reactstrap';
 
 function Navi() {
@@ -20,7 +20,7 @@ function Navi() {
     return (
         <div>
             <Navbar className="navi" color="light" light expand="md">
-                <Link to="/" className="navbar-brand">GoogleBooks Search</Link>
+                <NavLink href="https://github.com/charlesmbrady/GoogleBookSearch" target="_blank" className="navbar-brand">GoogleBooks Search</NavLink>
                 <NavbarToggler onClick={toggler} />
                 <Collapse isOpen={toggle} navbar>
                     <Nav className="ml-auto" navbar>
