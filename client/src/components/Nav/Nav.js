@@ -10,7 +10,7 @@ import {
     NavLink
 } from 'reactstrap';
 
-function Nav() {
+function Navi() {
     const [toggle, setToggle] = useState(false);
 
     const toggler = () => {
@@ -34,7 +34,6 @@ function Nav() {
                 </Collapse>
             </Navbar>
         </div>
-
     );
-
-export default Nav;
+}
+export default Navi;
