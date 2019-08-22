@@ -5,17 +5,17 @@ import {
   Route
 } from "react-router-dom";
 /************************ Pages ***************************/
-import Home from './Pages/Home/Home';
-import Saved from './Pages/Saved/Saved';
+import Home from './components/pages/Home/Home';
+import Saved from './components/pages/Saved/Saved';
 import './App.css';
 /************ Components  **************/
-import Nav from './components/Nav/Nav';
+import Navi from './components/Nav/Nav';
 
 function App() {
   return (
     <Router>
-     <Nav />
       <div className="App">
+        <Navi />
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/saved" component={Saved} />
