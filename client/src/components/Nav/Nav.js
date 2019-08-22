@@ -7,7 +7,7 @@ import {
     NavbarToggler,
     Nav,
     NavItem,
-    NavLink
+    // NavLink
 } from 'reactstrap';
 
 function Navi() {

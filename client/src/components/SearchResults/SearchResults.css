@@ -1,0 +1,13 @@
+.search-book {
+    margin-top: 15px;
+}
+
+.search-results {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.search-book > title
+{
+    color: blue;
+}
