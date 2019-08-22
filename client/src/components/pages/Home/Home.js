@@ -52,7 +52,7 @@ function Home() {
                 <Row>
                     <Col>
                         {searchResults.length === 0 ? (
-                            <div>Going to return search results here</div>
+                            <div id="search-instruction">Use the search bar above to search the GoogleBooks API by book title</div>
                         ) : (
                                 <SearchResults searchResults={searchResults} setSearchResults={setSearchResults}/>
                             )}

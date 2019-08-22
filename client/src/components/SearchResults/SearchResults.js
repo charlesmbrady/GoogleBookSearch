@@ -20,7 +20,7 @@ function SearchResults(props) {
 
 
     useEffect(() => {
-
+        
     }, [searchResults]);
 
 

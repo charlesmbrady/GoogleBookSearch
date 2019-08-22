@@ -28,7 +28,7 @@ function Navi() {
                             <Link to="/" className="nav-link" onClick={toggler}>Search</Link>
                         </NavItem>
                         <NavItem>
-                            <Link to="/saved" className="nav-link" onClick={toggler}>View Saved Books</Link>
+                            <Link to="/saved" className="nav-link" onClick={toggler}>Saved</Link>
                         </NavItem>
                     </Nav>
                 </Collapse>

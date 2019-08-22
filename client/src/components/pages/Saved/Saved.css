@@ -6,3 +6,11 @@
     margin: 0 auto;
     text-align: center;
 }
+
+#no-saved-books {
+    margin: 0 auto;
+    margin-top: 20%;
+    text-align: center;
+    color: white;
+    font-size: 1.5em;
+}

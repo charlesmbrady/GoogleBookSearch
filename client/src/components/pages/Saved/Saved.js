@@ -27,7 +27,7 @@ function Saved() {
     }, [])
 
     useEffect(() => {
-        
+
     }, [savedBooks]);
 
 
@@ -35,24 +35,30 @@ function Saved() {
         <Container>
             <Row>
                 <Col>
-                    <div className="saved-books">
+                    {savedBooks.length === 0 ? (
+                        <div id="no-saved-books">No saved books yet... Go to the Search page and add some books!</div>
+                    )
+                        : (
+                            <div className = "saved-books">
                         {
                             savedBooks.map((book, i) => (
                                 <Card className="saved-book" key={i}>
                                     <CardHeader>{book.title}</CardHeader>
                                     <CardBody>
                                         <CardTitle>{book.authors}</CardTitle>
-                                        <CardText>{book.description}</CardText>
+                                        <CardText className="description">{book.description}</CardText>
                                         <a href={book.infoLink} target="_blank"><Button>Info</Button></a>
                                     </CardBody>
                                     <CardFooter><button onClick={() => removeBook(book._id, i)}>-</button></CardFooter>
                                 </Card>
-                            ))
-                        }
+                    ))
+                }
                     </div>
+                )}
+               
                 </Col>
             </Row>
-        </Container>
+        </Container >
     )
 }
 
