@@ -15,21 +15,17 @@ function Search(props) {
 
     useEffect(() => {
 
-<<<<<<< HEAD
         googleAPI.getBooks().then(res => {
             console.log(res.data);
             setSavedBooks(res.data);
         })
 
-=======
->>>>>>> 3ff8e3c7c14c6759853c3b01d4492814d4a067e0
         if (searchTerm !== undefined) {
             googleAPI.search(searchTerm)
                 .then((res) => {
                     console.log(res.data.items);
                     const newResults = [];
                     res.data.items.forEach(book => {
-<<<<<<< HEAD
                         savedBooks.forEach(saved => {
 
                             if (saved.infoLink === book.volumeInfo.infoLink) {
@@ -57,15 +53,6 @@ function Search(props) {
 
                     })
                     
-=======
-                        if (book.volumeInfo.title && book.volumeInfo.imageLinks && book.volumeInfo.authors && book.volumeInfo.infoLink && book.volumeInfo.description) {
-                            newResults.push(book.volumeInfo);
-                        }
-                        else {
-                            return 0;
-                        }
-                    })
->>>>>>> 3ff8e3c7c14c6759853c3b01d4492814d4a067e0
                     setSearchResults(newResults);
                 })
         }
@@ -91,7 +78,6 @@ function Search(props) {
                 </Col>
             </Row>
             {
-<<<<<<< HEAD
                 searchResults.map((book, i) => (
                     <SearchBook
                         key={i}
@@ -102,17 +88,6 @@ function Search(props) {
                         authors={book.authors}
                         infoLink={book.infoLink}
                         thumbnail={book.thumbnail}
-=======
-                searchResults.map(book => (
-                    <SearchBook
-                    searchResults={searchResults}
-                    setSearchResults={setSearchResults}
-                    title={book.title}
-                    description={book.description}
-                    authors={book.authors}
-                    infoLink={book.infoLink}
-                    thumbnail={book.imageLinks.smallThumbnail}
->>>>>>> 3ff8e3c7c14c6759853c3b01d4492814d4a067e0
                     />
                 ))
             }
