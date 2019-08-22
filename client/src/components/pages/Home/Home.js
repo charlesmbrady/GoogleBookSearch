@@ -12,7 +12,6 @@ function Home() {
     const debouncedSearchTerm = useDebounce(searchTerm, 500);
 
     useEffect(() => {
-        //TODO: filter saved books out of search results
         if (!searchTerm) {
             return;
         }
