@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Col } from 'reactstrap';
 import useDebounce from "../../../utils/debounceHook";
 import './Home.css';
 import googleAPI from '../../../utils/googleAPI';
@@ -35,31 +34,26 @@ function Home() {
         }
     }, [debouncedSearchTerm]);
 
-    useEffect(() => {
+    // useEffect(() => {
 
-    }, [searchResults]);
+    // }, [searchResults]);
 
     return (
-        <div>
-            <Container>
-                <Row>
-                    <Col>
-                        <input id="search-input" placeholder="Type search term here" onChange={(event) => setSearchTerm(event.target.value)}></input>
-                    </Col>
-                </Row>
+        <div className="home-wrapper">
+            <div className="search-wrapper">
+                    <input id="search-input" placeholder="Type search term here" onChange={(event) => setSearchTerm(event.target.value)}></input>
+            </div>
 
-                <Row>
-                    <Col>
-                        {searchResults.length === 0 ? (
-                            <div id="search-instruction">Use the search bar above to search the GoogleBooks API by book title</div>
-                        ) : (
-                                <SearchResults searchResults={searchResults} setSearchResults={setSearchResults}/>
-                            )}
+            <div className="search-results-wrapper">
+                
+                    {searchResults.length === 0 ? (
+                        <div id="search-instruction">Use the search bar above to search the GoogleBooks API by book title</div>
+                    ) : (
+                            <SearchResults searchResults={searchResults} setSearchResults={setSearchResults} />
+                        )}
 
-                    </Col>
-                </Row>
+            </div>
 
-            </Container>
         </div>
     );
 }

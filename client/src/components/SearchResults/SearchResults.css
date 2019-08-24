@@ -1,13 +1,64 @@
-.search-book {
-    margin-top: 15px;
-}
-
 .search-results {
     margin: 0 auto;
+    height: 100%;
     text-align: center;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+.search-book {
+    display: inline-block;
+    margin-top: 0px;
+    margin-right: 15px;
+    height: 80%;
+    width: 80vw;
+    border: 1px solid white;
+    overflow-x: hidden;
+    white-space: normal;
+}
+.search-book > .title {
+    height: 10%;
+    padding: 15px;
+    font-size: 15px;
+    overflow: hidden;
+    border: 1px solid blue;
+}
+.search-book > .foot {
+    height: 10%;
+    border: 1px solid black;
 }
 
-.search-book > title
-{
-    color: blue;
+.search-book > .card-body {
+    height: 80%;
+    overflow-y: scroll;
+    border: 1px solid black;
+}
+.search-book > .description {
+    height: 80%;
+    border: 1px solid black;
+}
+.search-book > .authors {
+    height: 10%;
+    border: 1px solid black;
+}
+.search-book > .info-link {
+    height: 10%;
+    border: 1px solid black;
+}
+.search-book > .book-image {
+    height: 100%;
+}
+
+.search-book > .cover {
+    height: 480px;
+    width: 320px;
+    background-size: cover;
+}
+
+.flip-book {
+    display: table-cell;
+    height: 480px;
+    width: 320px;
+    text-align: center;
+    vertical-align: middle;
 }

@@ -18,7 +18,7 @@ function Navi() {
     }
 
     return (
-        <div>
+        <div className="nav-wrapper">
             <Navbar className="navi" color="light" light expand="md">
                 <NavLink href="https://github.com/charlesmbrady/GoogleBookSearch" target="_blank" className="navbar-brand">GoogleBooks Search</NavLink>
                 <NavbarToggler onClick={toggler} />
