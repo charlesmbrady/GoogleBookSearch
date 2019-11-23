@@ -1,7 +1,7 @@
-// import {
-//     Card, Button, CardHeader, CardFooter, CardBody,
-//     CardTitle, CardText
-// } from 'reactstrap';
+import {
+    Card, Button, CardHeader, CardFooter, CardBody,
+    CardTitle, CardText
+} from 'reactstrap';
 import './SearchResults.css';
 import utils from '../../utils/googleAPI';
 import FlipPage from 'react-flip-page';
@@ -32,19 +32,8 @@ function SearchResults(props) {
                     // <FlipPage className="search-book">
 
 
-                    //     <img className="cover" key={i}
-                    //         src={book.smallThumbnailLink}
-                    //         style={
-                    //             {
-                    //                 // backgroundImage: `url(${book.smallThumbnailLink})`,
-                    //                 // backgroundSize: 'contain',
-                    //                 // backgroundRepeat: 'no-repeat'
-                    //             }
-                    //         }
-                    //     ></img>
-                    //         <div className="title">{book.title}</div>
                     //         <div className="card-body">
-                    //             <CardTitle className="authors">{book.authors}</CardTitle>
+                    
                     //             <CardText className="description">{book.description}</CardText>
                     //             <a className="info-link" href={book.infoLink} target="_blank"><Button>Info</Button></a>
                     //         </div>
@@ -52,13 +41,17 @@ function SearchResults(props) {
 
                     // </FlipPage>
                     <FlipPage className="search-book" key={i}>
+                        <div className="flip-book">
+                            <img src={book.thumbnailLink} alt="antelope" className="cover"></img>
+                            <div className="foot"><Button onClick={() => saveBook(book, i)}>+</Button></div>
+                        </div>
                         <div>
-                            <img src="http://unsplash.it/320/480" alt="antelope" />
+                            <div className="title"><a href={book.infolink}>{book.title}</a></div>
+                            <div className="authors">{book.authors}</div>
+                            <div className="description">{book.description}</div>
+                            <div className="foot"><Button onClick={() => saveBook(book, i)}>+</Button></div>
                         </div>
 
-                        <div className="flip-book">
-                            <img src={book.thumbnailLink} alt="antelope"></img>
-                        </div>
 
                     </FlipPage>
                 ))
