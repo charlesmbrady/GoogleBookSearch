@@ -68,7 +68,10 @@ function Home() {
           {searchResults.map((book, i) => (
             <div className="col-md-3 col-sm-6 col-xs-12 book">
               <Card>
-                <FaRegBookmark className="save-icon" />
+                <FaRegBookmark
+                  className="save-icon"
+                  onClick={() => console.log("save image code here")}
+                />
                 <CardImg
                   className="book-image"
                   top
