@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import useDebounce from "../../../utils/debounceHook";
+import { FaRegBookmark } from "react-icons/fa";
 import "./Home.css";
 import {
   Card,
@@ -19,11 +20,14 @@ import {
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import googleAPI from "../../../utils/googleAPI";
+import BookModal from "./modals/SearchBook";
 
 function Home() {
   const [query, setQuery] = useState("");
   const [count, setCount] = useState(0);
   const [searchResults, setSearchResults] = useState([]);
+  const [book, setBook] = useState(null);
+  const [bookModal] = useState(true);
 
   useEffect(() => {
     if (count !== 0) {
@@ -64,6 +68,7 @@ function Home() {
           {searchResults.map((book, i) => (
             <div className="col-md-3 col-sm-6 col-xs-12 book">
               <Card>
+                <FaRegBookmark className="save-icon" />
                 <CardImg
                   className="book-image"
                   top
@@ -74,12 +79,20 @@ function Home() {
                       : ""
                   }
                   alt="Card image cap"
+                  onClick={() => setBook(book)}
                 />
               </Card>
             </div>
           ))}
         </Row>
       </Container>
+      {book !== null && (
+        <BookModal
+          isOpen={bookModal}
+          book={book}
+          toggle={() => setBook(null)}
+        />
+      )}
     </div>
   );
 }
