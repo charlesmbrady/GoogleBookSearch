@@ -17,6 +17,7 @@ import {
   CardImg,
   CardSubtitle
 } from "reactstrap";
+import { Link } from "react-router-dom";
 import googleAPI from "../../../utils/googleAPI";
 
 function Home() {
@@ -27,7 +28,9 @@ function Home() {
   useEffect(() => {
     if (count !== 0) {
       googleAPI.searchTitles(query).then(res => {
-        console.log("here are search resultts" + res);
+        //for each book in res.data.items, grab the respective fields and store them as a book
+        //also filter books that don't have all the fields?
+        setSearchResults(res.data.items);
       });
     }
   }, [count]);
@@ -39,9 +42,11 @@ function Home() {
 
   return (
     <div>
-      <Container>
-        <Row className="row justify-content-end">
-          <Col className="col-md-auto col-sm-6">View Saved Books</Col>
+      <Container className="container-fluid">
+        <Row className="row my-nav justify-content-end">
+          <Col className="col-md-auto col-sm-6">
+            <Link to="/saved">View Saved Books</Link>
+          </Col>
         </Row>
         <Row className="row justify-content-md-center">
           <Col className="col-md-6 col-sm">
@@ -55,26 +60,32 @@ function Home() {
             </InputGroup>
           </Col>
         </Row>
-        <Row>
-          <Col className="col-sm-3">
-            <Card>
-              <CardImg
-                top
-                width="100%"
-                src="/assets/318x180.svg"
-                alt="Card image cap"
-              />
-              <CardBody>
-                <CardTitle>Card title</CardTitle>
-                <CardSubtitle>Card subtitle</CardSubtitle>
-                <CardText>
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </CardText>
-                <Button>Button</Button>
-              </CardBody>
-            </Card>
-          </Col>
+        <Row className="books-wrapper">
+          {searchResults.map((book, i) => (
+            <Col className="col-md-3 col-sm-12">
+              <Card>
+                <CardImg
+                  top
+                  width="100%"
+                  src={
+                    book.volumeInfo.imageLinks !== undefined
+                      ? book.volumeInfo.imageLinks.thumbnail
+                      : ""
+                  }
+                  alt="Card image cap"
+                />
+                {/* <CardBody>
+                  <CardTitle>Card title</CardTitle>
+                  <CardSubtitle>Card subtitle</CardSubtitle>
+                  <CardText>
+                    Some quick example text to build on the card title and make
+                    up the bulk of the card's content.
+                  </CardText>
+                  <Button>Button</Button>
+                </CardBody> */}
+              </Card>
+            </Col>
+          ))}
         </Row>
       </Container>
     </div>
