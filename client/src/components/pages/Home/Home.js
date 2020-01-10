@@ -29,6 +29,8 @@ function Home() {
   const [book, setBook] = useState(null);
   const [bookModal] = useState(true);
 
+  const debouncedSearchCount = useDebounce(count, 500);
+
   useEffect(() => {
     if (count !== 0) {
       googleAPI.searchTitles(query).then(res => {
@@ -63,7 +65,7 @@ function Home() {
         setSearchResults(filteredBooks);
       });
     }
-  }, [count]);
+  }, [debouncedSearchCount]);
 
   const search = query => {
     setQuery(query);
