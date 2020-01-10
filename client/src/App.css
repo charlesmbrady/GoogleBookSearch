@@ -4,12 +4,13 @@ background-image: url("https://elburn.lib.il.us/wp-content/uploads/2017/05/libra
 } */
 .App {
   height: 100%;
-  weight: 100%;
+  width: 100%;
 }
 .main {
   position: relative;
   height: 100%;
   width: 100%;
+  overflow: scroll;
 }
 .main::before {
   content: "";
@@ -19,7 +20,7 @@ background-image: url("https://elburn.lib.il.us/wp-content/uploads/2017/05/libra
   left: 0;
   bottom: 0;
   right: 0;
-  position: absolute;
+  position: fixed;
   z-index: 0;
 }
 .main::after {
@@ -30,6 +31,6 @@ background-image: url("https://elburn.lib.il.us/wp-content/uploads/2017/05/libra
   left: 0;
   bottom: 0;
   right: 0;
-  position: absolute;
+  position: fixed;
   z-index: -1;
 }
