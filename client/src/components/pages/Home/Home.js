@@ -36,18 +36,30 @@ function Home() {
         //also filter books that don't have all the fields?
 
         //must have title, authors, description, infoLink, thumbnail
-        const filteredBooks = res.data.items.filter(book => {
-          if (
-            book.volumeInfo.title !== undefined &&
-            book.volumeInfo.authors !== undefined &&
-            book.volumeInfo.description !== undefined &&
-            book.volumeInfo.imageLinks !== undefined &&
-            book.volumeInfo.imageLinks.smallThumbnail !== undefined &&
-            book.volumeInfo.infoLink !== undefined
-          ) {
-            return book;
-          }
-        });
+        const filteredBooks = res.data.items
+          .filter(book => {
+            if (
+              book.volumeInfo !== undefined &&
+              book.volumeInfo.title !== undefined &&
+              book.volumeInfo.authors !== undefined &&
+              book.volumeInfo.description !== undefined &&
+              book.volumeInfo.imageLinks !== undefined &&
+              book.volumeInfo.imageLinks.smallThumbnail !== undefined &&
+              book.volumeInfo.infoLink !== undefined
+            ) {
+              return book;
+            }
+          })
+          .map(book => {
+            const newBook = {
+              title: book.volumeInfo.title,
+              authors: book.volumeInfo.authors,
+              description: book.volumeInfo.description,
+              thumbnail: book.volumeInfo.imageLinks.smallThumbnail,
+              infoLink: book.volumeInfo.infoLink
+            };
+            return newBook;
+          });
         setSearchResults(filteredBooks);
       });
     }
@@ -92,11 +104,7 @@ function Home() {
                   className="book-image"
                   top
                   width="100%"
-                  src={
-                    book.volumeInfo.imageLinks !== undefined
-                      ? book.volumeInfo.imageLinks.thumbnail
-                      : ""
-                  }
+                  src={book.thumbnail}
                   alt="Card image cap"
                   onClick={() => setBook(book)}
                 />
