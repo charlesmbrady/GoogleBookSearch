@@ -49,7 +49,9 @@ function Home() {
       <Container className="container-fluid">
         <Row className="row my-nav justify-content-end">
           <Col className="col-md-auto col-sm-6">
-            <Link to="/saved">View Saved Books</Link>
+            <Link className="my-nav-link" to="/saved">
+              View Saved Books
+            </Link>
           </Col>
         </Row>
         <Row className="row justify-content-md-center">

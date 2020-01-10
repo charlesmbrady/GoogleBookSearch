@@ -12,6 +12,20 @@
 .my-nav {
   padding: 15px;
 }
+.my-nav-link {
+  color: white;
+  font-family: "Helvetica Neue";
+  font-weight: bold;
+  background: rgba(0, 0, 0, 0.589);
+  border-radius: 26px;
+  padding: 10px;
+}
+.my-nav-link:hover {
+  text-decoration: none;
+  color: white;
+  background: rgba(0, 0, 0, 0.76);
+  transition-duration: 300ms;
+}
 
 .row.display-flex {
   display: flex;
