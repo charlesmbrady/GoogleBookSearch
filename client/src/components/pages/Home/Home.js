@@ -60,11 +60,12 @@ function Home() {
             </InputGroup>
           </Col>
         </Row>
-        <Row className="books-wrapper">
+        <Row className="row books-wrapper">
           {searchResults.map((book, i) => (
-            <Col className="col-md-3 col-sm-12">
+            <div className="col-md-3 col-sm-6 col-xs-12 book">
               <Card>
                 <CardImg
+                  className="book-image"
                   top
                   width="100%"
                   src={
@@ -84,7 +85,7 @@ function Home() {
                   <Button>Button</Button>
                 </CardBody> */}
               </Card>
-            </Col>
+            </div>
           ))}
         </Row>
       </Container>

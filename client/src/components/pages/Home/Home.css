@@ -12,3 +12,24 @@
 .my-nav {
   padding: 15px;
 }
+
+.row.display-flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+.row.display-flex > [class*="col-"] {
+  display: flex;
+  flex-direction: column;
+}
+
+.book {
+  margin-bottom: 25px;
+}
+.book-image {
+  box-shadow: 0px 6px 10px black;
+}
+
+.book-image:hover {
+  transition-duration: 300ms;
+  box-shadow: 0px 10px 15px black;
+}
