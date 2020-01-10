@@ -34,7 +34,21 @@ function Home() {
       googleAPI.searchTitles(query).then(res => {
         //for each book in res.data.items, grab the respective fields and store them as a book
         //also filter books that don't have all the fields?
-        setSearchResults(res.data.items);
+
+        //must have title, authors, description, infoLink, thumbnail
+        const filteredBooks = res.data.items.filter(book => {
+          if (
+            book.volumeInfo.title !== undefined &&
+            book.volumeInfo.authors !== undefined &&
+            book.volumeInfo.description !== undefined &&
+            book.volumeInfo.imageLinks !== undefined &&
+            book.volumeInfo.imageLinks.smallThumbnail !== undefined &&
+            book.volumeInfo.infoLink !== undefined
+          ) {
+            return book;
+          }
+        });
+        setSearchResults(filteredBooks);
       });
     }
   }, [count]);
