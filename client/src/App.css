@@ -1,0 +1,35 @@
+/* .App::after {
+background-image: url("https://elburn.lib.il.us/wp-content/uploads/2017/05/library-services.jpg"); 
+  background-repeat: no-repeat;
+} */
+.App {
+  height: 100%;
+  weight: 100%;
+}
+.main {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+.main::before {
+  content: "";
+  background: black;
+  opacity: 0.1;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: 0;
+}
+.main::after {
+  content: "";
+  background: url("https://elburn.lib.il.us/wp-content/uploads/2017/05/library-services.jpg");
+  opacity: 0.4;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+}

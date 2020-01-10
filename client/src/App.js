@@ -10,11 +10,15 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/saved" component={Saved} />
-          <Route component={Home} />
-        </Switch>
+        <div></div>
+        <div className="main">
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/saved" component={Saved} />
+            <Route component={Home} />
+          </Switch>
+        </div>
+        <div></div>
       </div>
     </Router>
   );
