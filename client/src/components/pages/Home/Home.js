@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import useDebounce from "../../../utils/debounceHook";
-import { FaRegBookmark } from "react-icons/fa";
+import { FaRegBookmark, FaSpinner } from "react-icons/fa";
+
 import "./Home.css";
 import {
   Card,
@@ -28,11 +29,13 @@ function Home() {
   const [searchResults, setSearchResults] = useState([]);
   const [book, setBook] = useState(null);
   const [bookModal] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const debouncedSearchCount = useDebounce(count, 500);
 
   useEffect(() => {
     if (count !== 0) {
+      setIsLoading(true);
       googleAPI.searchTitles(query).then(res => {
         //for each book in res.data.items, grab the respective fields and store them as a book
         //also filter books that don't have all the fields
@@ -62,6 +65,7 @@ function Home() {
             return newBook;
           });
         setSearchResults(filteredBooks);
+        setIsLoading(false);
       });
     }
   }, [debouncedSearchCount]);
@@ -73,6 +77,11 @@ function Home() {
 
   return (
     <div>
+      {isLoading && (
+        <div className="loading-mask">
+          <FaSpinner className="loading-spinner"></FaSpinner>
+        </div>
+      )}
       <Container className="container-fluid">
         <Row className="row my-nav justify-content-end">
           <Col className="col-md-auto col-sm-6">
