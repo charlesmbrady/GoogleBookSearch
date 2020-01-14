@@ -13,7 +13,18 @@ import {
 import "./Saved.css";
 import React, { useEffect, useState } from "react";
 import utils from "../../../utils/googleAPI";
-function Saved() {
+function Saved({ notify }) {
+  const [count, setCount] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+  const [savedBooks, setSavedBooks] = useState([]);
+
+  useEffect(() => {
+    utils.getBooks().then(savedBooks => {
+      setSavedBooks(savedBooks.data);
+      setIsLoading(false);
+    });
+  }, [count]);
+
   return (
     <div>
       <Container>
