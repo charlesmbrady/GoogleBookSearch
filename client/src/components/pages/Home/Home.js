@@ -23,7 +23,7 @@ import { Link } from "react-router-dom";
 import googleAPI from "../../../utils/googleAPI";
 import BookModal from "./modals/SearchBook";
 
-function Home() {
+function Home({ notify }) {
   const [query, setQuery] = useState("");
   const [count, setCount] = useState(0);
   const [searchResults, setSearchResults] = useState([]);
@@ -88,11 +88,12 @@ function Home() {
       }
     }
     if (found === true) {
-      alert(`You already saved that book ${book.title}`);
+      notify("error", `You already saved that book ${book.title}`);
       return 0;
     }
     googleAPI.saveBook(book).then(bookResponse => {
       if (bookResponse.status === 200) {
+        notify("success", `Saved ${book.title}!`);
         setCount(count + 1);
       }
     });
@@ -155,6 +156,9 @@ function Home() {
           book={book}
           toggle={() => setBook(null)}
           savedBooks={savedBooks}
+          setCount={setCount}
+          count={count}
+          notify={notify}
         />
       )}
     </div>

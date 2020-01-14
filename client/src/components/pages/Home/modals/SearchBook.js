@@ -12,7 +12,15 @@ import {
 } from "reactstrap";
 import googleAPI from "../../../../utils/googleAPI";
 
-export default function SearchBook({ isOpen, toggle, book, savedBooks }) {
+export default function SearchBook({
+  isOpen,
+  toggle,
+  book,
+  savedBooks,
+  count,
+  setCount,
+  notify
+}) {
   const saveBook = book => {
     var found = false;
     for (var i = 0; i < savedBooks.length; i++) {
@@ -28,6 +36,7 @@ export default function SearchBook({ isOpen, toggle, book, savedBooks }) {
 
     googleAPI.saveBook(book).then(bookResponse => {
       if (bookResponse.status === 200) {
+        setCount(count + 1);
         toggle();
       }
     });
