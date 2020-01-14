@@ -30,10 +30,14 @@ function Home() {
   const [book, setBook] = useState(null);
   const [bookModal] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
+  const [savedBooks, setSavedBooks] = useState([]);
 
   const debouncedSearchCount = useDebounce(count, 500);
 
   useEffect(() => {
+    googleAPI.getBooks().then(savedBooks => {
+      setSavedBooks(savedBooks.data);
+    });
     if (count !== 0) {
       setIsLoading(true);
       googleAPI.searchTitles(query).then(res => {
@@ -75,6 +79,25 @@ function Home() {
     setCount(count + 1);
   };
 
+  const saveBook = book => {
+    var found = false;
+    for (var i = 0; i < savedBooks.length; i++) {
+      if (savedBooks[i].infoLink == book.infoLink) {
+        found = true;
+        break;
+      }
+    }
+    if (found === true) {
+      alert(`You already saved that book ${book.title}`);
+      return 0;
+    }
+    googleAPI.saveBook(book).then(bookResponse => {
+      if (bookResponse.status === 200) {
+        setCount(count + 1);
+      }
+    });
+  };
+
   return (
     <div>
       {isLoading && (
@@ -111,7 +134,7 @@ function Home() {
               <Card>
                 <FaRegBookmark
                   className="save-icon"
-                  onClick={() => console.log("save image code here")}
+                  onClick={() => saveBook(book)}
                 />
                 <CardImg
                   className="book-image"

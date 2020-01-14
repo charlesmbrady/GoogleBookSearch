@@ -26,7 +26,7 @@ background-image: url("https://elburn.lib.il.us/wp-content/uploads/2017/05/libra
 .main::after {
   content: "";
   background: url("https://elburn.lib.il.us/wp-content/uploads/2017/05/library-services.jpg");
-  opacity: 0.4;
+  opacity: 0.5;
   top: 0;
   left: 0;
   bottom: 0;
