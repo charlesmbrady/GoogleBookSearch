@@ -82,7 +82,7 @@ function Home() {
           </Col>
         </Row>
         <Row className="title">
-          <Col>Boog</Col>
+          <Col>Google Books Search</Col>
         </Row>
         <Row className="row justify-content-md-center">
           <Col className="col-md-6 col-sm">
