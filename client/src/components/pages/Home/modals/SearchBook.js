@@ -59,9 +59,7 @@ export default function SearchBook({
       </ModalBody>
       <ModalFooter>
         <a href={book.infoLink} target="_blank">
-          <Button color="warning" onClick={() => saveBook(book)}>
-            Open In Store
-          </Button>
+          <Button color="warning">Open In Store</Button>
         </a>{" "}
         <Button color="primary" onClick={() => saveBook(book)}>
           Save
