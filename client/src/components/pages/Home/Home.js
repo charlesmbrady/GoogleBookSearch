@@ -88,12 +88,12 @@ function Home({ notify }) {
       }
     }
     if (found === true) {
-      notify("error", `You already saved that book ${book.title}`);
+      notify("error", `You already saved that book "${book.title}"`);
       return 0;
     }
     googleAPI.saveBook(book).then(bookResponse => {
       if (bookResponse.status === 200) {
-        notify("success", `Saved ${book.title}!`);
+        notify("success", `Saved "${book.title}"!`);
         setCount(count + 1);
       }
     });

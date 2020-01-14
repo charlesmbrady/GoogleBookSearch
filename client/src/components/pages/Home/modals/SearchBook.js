@@ -30,12 +30,13 @@ export default function SearchBook({
       }
     }
     if (found === true) {
-      alert(`You already saved that book ${book.title}`);
+      notify("error", `You already saved that book ${book.title}`);
       return 0;
     }
 
     googleAPI.saveBook(book).then(bookResponse => {
       if (bookResponse.status === 200) {
+        notify("success", `You saved "${book.title}"`);
         setCount(count + 1);
         toggle();
       }
