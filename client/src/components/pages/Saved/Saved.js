@@ -1,4 +1,4 @@
-import { FaRegBookmark, FaSpinner } from "react-icons/fa";
+import { FaTrashAlt, FaSpinner } from "react-icons/fa";
 import {
   Card,
   Button,
@@ -56,8 +56,8 @@ function Saved({ notify }) {
           {savedBooks.map((book, i) => (
             <div className="col-md-3 col-sm-6 col-xs-12 book">
               <Card>
-                <FaRegBookmark
-                  className="save-icon"
+                <FaTrashAlt
+                  className="trash-icon"
                   onClick={() => console.log("delete book code here")}
                 />
                 <CardImg
