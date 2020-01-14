@@ -35,8 +35,7 @@ function Home() {
     if (count !== 0) {
       googleAPI.searchTitles(query).then(res => {
         //for each book in res.data.items, grab the respective fields and store them as a book
-        //also filter books that don't have all the fields?
-
+        //also filter books that don't have all the fields
         //must have title, authors, description, infoLink, thumbnail
         const filteredBooks = res.data.items
           .filter(book => {
@@ -81,6 +80,9 @@ function Home() {
               View Saved Books
             </Link>
           </Col>
+        </Row>
+        <Row className="title">
+          <Col>Boog</Col>
         </Row>
         <Row className="row justify-content-md-center">
           <Col className="col-md-6 col-sm">
