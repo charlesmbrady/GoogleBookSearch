@@ -154,6 +154,7 @@ function Home() {
           isOpen={bookModal}
           book={book}
           toggle={() => setBook(null)}
+          savedBooks={savedBooks}
         />
       )}
     </div>

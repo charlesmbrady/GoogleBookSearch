@@ -12,8 +12,20 @@ import {
 } from "reactstrap";
 import googleAPI from "../../../../utils/googleAPI";
 
-export default function SearchBook({ isOpen, toggle, book }) {
+export default function SearchBook({ isOpen, toggle, book, savedBooks }) {
   const saveBook = book => {
+    var found = false;
+    for (var i = 0; i < savedBooks.length; i++) {
+      if (savedBooks[i].infoLink == book.infoLink) {
+        found = true;
+        break;
+      }
+    }
+    if (found === true) {
+      alert(`You already saved that book ${book.title}`);
+      return 0;
+    }
+
     googleAPI.saveBook(book).then(bookResponse => {
       if (bookResponse.status === 200) {
         toggle();
