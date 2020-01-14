@@ -23,7 +23,14 @@ export default function SearchBook({ isOpen, toggle, book }) {
 
   return (
     <Modal isOpen={isOpen} toggle={() => toggle()}>
-      <ModalHeader toggle={() => toggle()}>Edit Todo</ModalHeader>
+      <ModalHeader toggle={() => toggle()}>
+        {book.title} <br></br>{" "}
+        <span className="authors">
+          {book.authors.map((author, i) => (
+            <span>{i !== 0 ? ` | ${author}` : `${author}`}</span>
+          ))}
+        </span>
+      </ModalHeader>
       <ModalBody>
         Hello book
         <div>{JSON.stringify(book)}</div>
