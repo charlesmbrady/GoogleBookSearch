@@ -34,6 +34,14 @@ function Saved({ notify }) {
     });
   }, [count]);
 
+  const removeBook = book => {
+    utils.removeBook(book._id).then(bookResponse => {
+      if (bookResponse.status === 200) {
+        notify("success", `Removed "${book.title}"!`);
+        setCount(count + 1);
+      }
+    });
+  };
   return (
     <div>
       {isLoading && (
@@ -58,7 +66,7 @@ function Saved({ notify }) {
               <Card>
                 <FaTrashAlt
                   className="trash-icon"
-                  onClick={() => console.log("delete book code here")}
+                  onClick={() => removeBook(book)}
                 />
                 <CardImg
                   className="book-image"
