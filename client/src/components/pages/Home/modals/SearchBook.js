@@ -32,10 +32,15 @@ export default function SearchBook({ isOpen, toggle, book }) {
         </span>
       </ModalHeader>
       <ModalBody>
-        Hello book
-        <div>{JSON.stringify(book)}</div>
+        <h5 className="field">Description</h5>
+        <p>{book.description}</p>
       </ModalBody>
       <ModalFooter>
+        <a href={book.infoLink} target="_blank">
+          <Button color="warning" onClick={() => saveBook(book)}>
+            Open In Store
+          </Button>
+        </a>{" "}
         <Button color="primary" onClick={() => saveBook(book)}>
           Save
         </Button>{" "}
