@@ -61,6 +61,11 @@ function Saved({ notify }) {
           <Col>Saved Books</Col>
         </Row>
         <Row className="row books-wrapper">
+          {savedBooks.length === 0 && (
+            <Col>
+              <h6>No saved books yet...</h6>
+            </Col>
+          )}
           {savedBooks.map((book, i) => (
             <div className="col-md-3 col-sm-6 col-xs-12 book">
               <Card>
