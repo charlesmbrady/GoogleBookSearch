@@ -41,6 +41,10 @@ function Home({ notify }) {
     if (count !== 0) {
       setIsLoading(true);
       googleAPI.searchTitles(query).then(res => {
+        if (res.data.items === undefined) {
+          setIsLoading(false);
+          return 0;
+        }
         //for each book in res.data.items, grab the respective fields and store them as a book
         //also filter books that don't have all the fields
         //must have title, authors, description, infoLink, thumbnail

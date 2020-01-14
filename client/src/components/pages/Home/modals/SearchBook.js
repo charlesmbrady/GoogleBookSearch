@@ -44,6 +44,16 @@ export default function SearchBook({
     });
   };
 
+  const removeBook = book => {
+    googleAPI.removeBook(book._id).then(bookResponse => {
+      if (bookResponse.status === 200) {
+        notify("success", `Removed "${book.title}"!`);
+        setCount(count + 1);
+        toggle();
+      }
+    });
+  };
+
   return (
     <Modal isOpen={isOpen} toggle={() => toggle()}>
       <ModalHeader toggle={() => toggle()}>
@@ -67,6 +77,11 @@ export default function SearchBook({
             Save
           </Button>
         )}{" "}
+        {saved && (
+          <Button color="primary" onClick={() => removeBook(book)}>
+            Remove
+          </Button>
+        )}
         <Button color="secondary" onClick={() => toggle()}>
           Cancel
         </Button>

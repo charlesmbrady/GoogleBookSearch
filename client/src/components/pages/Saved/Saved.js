@@ -86,6 +86,7 @@ function Saved({ notify }) {
           isOpen={bookModal}
           book={book}
           toggle={() => setBook(null)}
+          removeBook={removeBook}
           savedBooks={savedBooks}
           setCount={setCount}
           count={count}
