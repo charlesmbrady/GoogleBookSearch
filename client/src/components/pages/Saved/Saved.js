@@ -82,6 +82,7 @@ function Saved({ notify }) {
           setCount={setCount}
           count={count}
           notify={notify}
+          saved={true}
         />
       )}
     </div>

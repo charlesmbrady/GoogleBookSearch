@@ -19,6 +19,7 @@ export default function SearchBook({
   savedBooks,
   count,
   setCount,
+  saved,
   notify
 }) {
   const saveBook = book => {
@@ -61,9 +62,11 @@ export default function SearchBook({
         <a href={book.infoLink} target="_blank">
           <Button color="warning">Open In Store</Button>
         </a>{" "}
-        <Button color="primary" onClick={() => saveBook(book)}>
-          Save
-        </Button>{" "}
+        {!saved && (
+          <Button color="primary" onClick={() => saveBook(book)}>
+            Save
+          </Button>
+        )}{" "}
         <Button color="secondary" onClick={() => toggle()}>
           Cancel
         </Button>
